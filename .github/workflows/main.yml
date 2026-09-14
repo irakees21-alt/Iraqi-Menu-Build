@@ -21,7 +21,7 @@ jobs:
         rm iPhoneOS14.5.sdk.zip
 
     - name: Extract and Compile Source
-      run: |
+      run: 
         unzip mute.free.zip
         cd dvfdg
         export THEOS=$HOME/theos
