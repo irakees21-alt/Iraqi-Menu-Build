@@ -1,0 +1,42 @@
+name: Build Menu Tweak dylib
+
+on:
+  push:
+    branches: [ master, main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup Ultimate Theos Environment
+      run: |
+        git clone --recursive https://github.com $HOME/theos
+        curl -LO https://githubusercontent.com
+        mkdir -p $HOME/theos/sdks
+        unzip iPhoneOS14.5.sdk.zip -d $HOME/theos/sdks
+        rm iPhoneOS14.5.sdk.zip
+
+    - name: Extract and Compile Source
+      run: |
+        unzip -o mute.free.zip
+        cd dvfdg
+        export THEOS=$HOME/theos
+        make package FINALPACKAGE=1 ALWAYS_CLEAN=1
+
+
+      env:
+        THEOS: /Users/runner/theos
+
+    - name: Upload Finished dylib
+      uses: actions/upload-artifact@v4
+      with:
+        name: ElIraqi-Menu-dylib
+        path: |
+          dvfdg/.theos/obj/debug/*.dylib
+          dvfdg/.theos/obj/*.dylib
+          dvfdg/*.dylib
+          dvfdg/**/*.dylib
