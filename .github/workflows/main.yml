@@ -21,7 +21,7 @@ jobs:
         rm iPhoneOS14.5.sdk.zip
 
     - name: Extract and Compile Source
-      run: 
+      run: |
         unzip mute.free.zip
         cd dvfdg
         export THEOS=$HOME/theos
@@ -33,7 +33,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: ElIraqi-Menu-dylib
-        path:
+        path: |
           dvfdg/.theos/obj/debug/*.dylib
           dvfdg/.theos/obj/*.dylib
           dvfdg/*.dylib
