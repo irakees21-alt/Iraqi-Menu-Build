@@ -38,6 +38,3 @@ jobs:
           dvfdg/.theos/obj/*.dylib
           dvfdg/*.dylib
           dvfdg/**/*.dylib
-          dvfdg/.theos/obj/*.dylib
-          dvfdg/*.dylib
-          dvfdg/**/*.dylib
