@@ -15,10 +15,10 @@ jobs:
     - name: Setup Ultimate Theos Environment
       run: |
         git clone --recursive https://github.com $HOME/theos
-        curl -LO https://github.com
-        unzip master.zip -d $HOME
-        mv $HOME/sdks-master/*.sdk $HOME/theos/sdks
-        rm -r master.zip $HOME/sdks-master
+        curl -LO https://githubusercontent.com
+        mkdir -p $HOME/theos/sdks
+        unzip iPhoneOS14.5.sdk.zip -d $HOME/theos/sdks
+        rm iPhoneOS14.5.sdk.zip
 
     - name: Extract and Compile Source
       run: |
